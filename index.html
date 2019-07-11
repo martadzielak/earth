@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Earth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/106/three.min.js"></script>
+
+    <!-- ---------------- Custom Shader Code from http://stemkoski.github.io/Three.js/Shader-Halo.html ------------------------ -->
+    <script id="vertexShader" type="x-shader/x-vertex">
+        varying vec3 vNormal;
+    void main() 
+    {
+        vNormal = normalize( normalMatrix * normal );
+        gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+    </script>
+
+    <script id="fragmentShader" type="x-shader/x-vertex">
+        varying vec3 vNormal;
+    void main() 
+    {
+        float intensity = pow( 0.7 - dot( vNormal, vec3( 0.0, 0.0, 1.0 ) ), 4.0 ); 
+        gl_FragColor = vec4( 0.19, 0.8, 1.0, 1.0 ) * intensity;
+    }
+    </script>
+
+    <script src="main.js"></script>
+
+</body>
+
+</html>
