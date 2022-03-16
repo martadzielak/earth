@@ -1,2 +1,2 @@
 # earth
-A simple earth project created with Tree.js
+A simple earth project created with Three.js
